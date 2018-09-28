@@ -1,0 +1,18 @@
+.container
+	.row
+		.col-12.title
+			h2.title Item view page
+	.row(v-if="error")
+		.col-12.title not found
+
+	.row(v-if="!error")
+		.col-12
+			table.table
+				thead
+				tbody
+					tr(v-for="(options, key) in item", :key="key", v-if="item")
+						td.table-active
+							strong {{key == '_id' ? 'ID' : key }}
+						td {{ options }}
+		.col-12
+			router-link(:to="{name: 'table_page'}") Back to list
